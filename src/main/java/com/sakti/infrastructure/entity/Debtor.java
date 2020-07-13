@@ -2,6 +2,8 @@ package com.sakti.infrastructure.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.annotations.GenerationTime;
 import org.hibernate.annotations.GenericGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,9 +20,10 @@ import java.util.UUID;
 public class Debtor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id  
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "debtor_seq")
-	@SequenceGenerator(name="debtor_seq", sequenceName="debtor_seq",allocationSize=1)
+	@Id
+    @SequenceGenerator(name="debtor_id_seq",sequenceName="debtor_id_seq", allocationSize = 1)
+	@GeneratedValue(generator = "debtor_id_seq", strategy = GenerationType.SEQUENCE)
+	@Column(name="id")
 	private long id;
 	
 	@Column(name="debtor_type")

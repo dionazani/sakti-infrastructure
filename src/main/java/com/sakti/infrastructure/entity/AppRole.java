@@ -28,9 +28,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AppRole {
 	
-	@Id  
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "app_role_seq")
-	@SequenceGenerator(name="app_role_seq", sequenceName="app_role_seq",allocationSize=1)
+	@Id
 	private long id;
 
 	private String code;

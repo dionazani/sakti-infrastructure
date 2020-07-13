@@ -15,7 +15,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,16 +32,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AppUser {
 
-	@Id  
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "app_user_seq")
-	@SequenceGenerator(name="app_user_seq", sequenceName="app_user_seq",allocationSize=1)
+	@Id
+    @SequenceGenerator(name="app_user_id_seq",sequenceName="app_user_id_seq", allocationSize = 1)
+	@GeneratedValue(generator = "app_user_id_seq", strategy = GenerationType.SEQUENCE)
+	@Column(name="id")
 	private long id;
 
-	private long roleId;
+	private long appRoleId;
+	
+	private short userType;
 	
 	@Temporal(TemporalType.DATE)
 	private Date changePasswordNextDate;
 
+	@CreationTimestamp
 	private Timestamp createdAt;
 
 	private short isLock;
@@ -49,6 +56,7 @@ public class AppUser {
 
 	private String registeredFrom;
 
+	@UpdateTimestamp
 	private Timestamp updatedAt;
 
 	private String username;
