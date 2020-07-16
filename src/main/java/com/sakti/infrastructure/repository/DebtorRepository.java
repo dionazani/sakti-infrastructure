@@ -9,4 +9,5 @@ import java.util.UUID;
 public interface DebtorRepository extends JpaRepository<Debtor, UUID>{
 
 	Debtor findByEmail(String email);
+	Debtor findByMobilePhone(String mobilePhone);
 }

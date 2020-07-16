@@ -80,9 +80,6 @@ public class DebtorPerson {
 	@Column(name="legal_phone")
 	private String legalPhone;
 
-	@Column(name="mobile_phone")
-	private String mobilePhone;
-
 	@Column(name="mother_name")
 	private String motherName;
 

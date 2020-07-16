@@ -45,5 +45,8 @@ public class Debtor implements Serializable {
 
 	@Column(name="updated_user_id", insertable=false)
 	private Long updatedUserId;
+	
+	@Column(name="mobile_phone")
+	private String mobilePhone;
 
 }

@@ -8,4 +8,5 @@ import com.sakti.infrastructure.entity.DebtorPerson;
 @Repository
 public interface DebtorPersonRepository extends JpaRepository<DebtorPerson, UUID>{
 
+	DebtorPerson findByIdentityNumber(String identityNumber);
 }
