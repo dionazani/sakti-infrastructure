@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class ResponseDto {
 
+	private int HttpStatusCode;
 	private String responseCode;
 	private String responseMessage;
 	private String clientMessage;

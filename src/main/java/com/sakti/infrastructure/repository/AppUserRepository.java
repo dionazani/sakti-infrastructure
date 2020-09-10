@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.sakti.infrastructure.entity.AppUser;
 
 @Repository
-public interface UserRepository extends JpaRepository<AppUser, UUID> {
+public interface AppUserRepository extends JpaRepository<AppUser, UUID> {
 
+	AppUser findByUsername(String username);
 }
