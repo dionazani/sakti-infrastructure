@@ -2,11 +2,14 @@ package com.sakti.infrastructure.dto;
 
 import java.sql.Timestamp;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
 public class ResponseDto {
 
+	@JsonIgnore
 	private int HttpStatusCode;
 	private String responseCode;
 	private String responseMessage;

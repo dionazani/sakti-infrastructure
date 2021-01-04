@@ -6,11 +6,14 @@ import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -30,7 +33,10 @@ public class Product implements Serializable {
     @SequenceGenerator(name="product_id_seq",sequenceName="product_id_seq", allocationSize = 1)
 	@GeneratedValue(generator = "product_id_seq", strategy = GenerationType.SEQUENCE)
 	@Column(name="id")
-	private long id;
+	private int id;
+	
+	@Column(name="product_group_id")
+	private int productGroupId;
 	
 	private String code;
 	
@@ -49,4 +55,16 @@ public class Product implements Serializable {
 
 	@Column(name="updated_user_id", insertable=false)
 	private Long updatedUserId;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="product_group_id", referencedColumnName="id", insertable = false, updatable = false)
+	private ProductGroup productGroup;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="created_user_id", referencedColumnName="id", insertable = false, updatable = false)
+	private AppUser createdUser;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="updated_user_id", referencedColumnName="id", insertable = false, updatable = false)
+	private AppUser updatedUser;
 }

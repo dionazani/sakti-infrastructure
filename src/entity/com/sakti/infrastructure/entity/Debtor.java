@@ -48,5 +48,17 @@ public class Debtor implements Serializable {
 	
 	@Column(name="mobile_phone")
 	private String mobilePhone;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="app_user_id", referencedColumnName="id", insertable = false, updatable = false)
+	private AppUser appUser;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="created_user_id", referencedColumnName="id", insertable = false, updatable = false)
+	private AppUser createdUser;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="updated_user_id", referencedColumnName="id", insertable = false, updatable = false)
+	private AppUser updatedUser;
 
 }

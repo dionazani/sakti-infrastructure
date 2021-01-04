@@ -4,11 +4,15 @@ import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -94,5 +98,19 @@ public class DebtorPerson {
 
 	@Column(name="pob")
 	private String pob;
+	
+	@Column(name="job_field_id")
+	private int jobFieldId;
+	
+	@Column(name="has_side_job")
+	private int hasSideJob;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="zipcode_id", referencedColumnName="id", insertable = false, updatable = false)
+	private Zipcode zipcode;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="job_field_id", referencedColumnName="id", insertable = false, updatable = false)
+	private JobField jobField;
 
 }
